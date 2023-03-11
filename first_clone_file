@@ -1,0 +1,72 @@
+package List_box;
+
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+public class practice1 
+{
+	public static void main(String[]args) throws InterruptedException
+	{
+	System.setProperty("WebDriver.Chrome.Driver","\\D:\\java selenium webdriver\\chromedriver_win32\\chromedriver.exe\\");
+	
+	WebDriver driver=new ChromeDriver();
+	
+	driver.get("https://www.facebook.com/");
+	
+	driver.findElement(By.xpath("(//a[@role='button'])[2]")).click();
+	
+	Thread.sleep(3000);
+	
+	
+	WebElement Day=driver.findElement(By.xpath("//select[@id='day']"));
+	
+	Thread.sleep(3000);
+
+	Select s1=new Select(Day);
+	
+	s1.selectByVisibleText("2");
+	
+	WebElement Month=driver.findElement(By.xpath("//select[@id='month']"));
+	
+	Select s2=new Select(Month);
+	
+	s2.selectByIndex(7);
+	
+	
+		WebElement Year=driver.findElement(By.xpath("//select[@id='year']"));
+	
+	Select s3=new Select(Year);
+	
+	s3.selectByValue("1995");
+	
+	
+	 List<WebElement> Text2=s2.getOptions();
+	 for(WebElement Text3:Text2)
+	 {
+		 
+		System.out.println(Text3.getText());
+	 }
+	 
+	 List<WebElement> Text4=s3.getOptions();
+	 for(WebElement Text5:Text4)
+	 {
+		 
+		System.out.println(Text5.getText());
+	 }
+	Boolean result= s3.isMultiple();
+	{
+	System.out.println(result);	
+	}
+	}
+	
+	
+}
+	
+	
+	
+	
